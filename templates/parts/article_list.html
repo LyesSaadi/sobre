@@ -1,0 +1,63 @@
+<div class="global_list">
+    {% if _list_name is defined %}
+    <h1>{{ _list_name }} <span class="count">({{ nlist }})</span></h1>
+    {% endif %}
+    <div class="list">
+        {% for _obj in _objects.object_list %}
+            <a href="/{{ _obj.url }}" class="object">
+                <h1>{{ _obj.title }}</h1>
+                <span class="metadata">
+                    <span>
+                        <img src="/{{ THEME_STATIC_DIR }}/images/date.svg" alt="Date" />
+                        Created: {{ _obj.date }}{% if _obj.metadata["modified"] %} / Modified: {{ _obj.metadata["modified"] }}{% endif %}
+                    </span>
+                    <span>
+                        <img src="/{{ THEME_STATIC_DIR }}/images/authors.svg" alt="Authors" />
+                        {% for author in _obj.authors %} {{ author }}{% endfor %}
+                    </span>
+                    {% if _obj.category != 'misc' and _obj.category != 'pages' %}
+                    <span>
+                        <img src="/{{ THEME_STATIC_DIR }}/images/category.svg" alt="Category" />
+                        {{ _obj.category }}
+                    </span>
+                    {% endif %}
+                    {% if _obj.tags is defined %}
+                    <span>
+                        <img src="/{{ THEME_STATIC_DIR }}/images/tags.svg" alt="Tags" />
+                        {% for tag in _obj.tags %} {{ tag }}{% endfor %}
+                    </span>
+                    {% endif %}
+                    <span>
+                        <img src="/{{ THEME_STATIC_DIR }}/images/languages.svg" alt="Languages" />
+                        Language: {{ _obj.lang }}
+                        {% if _obj.translations[0] is defined %}/ Translations:{% for trans in _obj.translations %} <span href="/{{ trans.url }}">{{ trans.lang }}</span>{% endfor %}{% endif %}
+                    </span>
+                </span>
+                <span class="summary">
+                    {{ _obj.summary }}
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="paginator">
+        {% if articles_previous_page %}
+            {% set num = articles_page.previous_page_number() %}
+            <a href="/{{ page_name }}{{ num if num > 1 else '' }}.html">&lt;</a>
+        {% else %}
+            <span>&lt;</span>
+        {% endif %}
+        {% for page in _paginator.page_range %}
+            {% if _objects.number == page %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a href="/{{ page_name }}{{ page if page > 1 else '' }}.html">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if articles_next_page %}
+            {% set num = articles_page.next_page_number() %}
+            <a href="/{{ page_name }}{{ num if num > 1 else '' }}.html">&gt;</a>
+        {% else %}
+            <span>&gt;</span>
+        {% endif %}
+    </div>
+</div>

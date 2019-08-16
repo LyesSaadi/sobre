@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% set _list_name = "Author: " + author.name %}
+{% set nlist = articles|count %}
+{% set _objects = articles_page %}
+{% set _paginator = articles_paginator %}
+{% include 'parts/article_list.html' %}
+{% endblock %}

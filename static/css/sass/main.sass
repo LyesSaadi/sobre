@@ -1,0 +1,141 @@
+// Colors
+$bg-dark: #000
+$bg: #111
+$bg-light: #222
+$font-very-dark: #777
+$font-dark: #BBB
+$font: #FFF
+$color: #15D
+
+// Fonts
+$font-family: 'sans-serif'
+
+@mixin center
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin transition($property, $duration: 0.4s)
+    transition:
+        duration: $duration
+        property: $property
+
+*
+    box-sizing: border-box
+
+body
+    margin: 0
+    background-color: $bg
+    color: $font
+    font-family: $font-family
+
+a
+    color: $font-dark
+
+.main
+    display: grid
+    grid-template-columns: 20% 80%
+    min-height: calc(100vh - 50px)
+
+.sidebar
+    background-color: $bg-dark
+    padding: 5px
+    .sitename
+        display: grid
+        grid-template-columns: min-content auto
+        padding-bottom: 10px
+        border-bottom: 2px solid $bg-light
+        text-decoration: none
+        img
+            height: 50px
+        span
+            display: flex
+            align-items: center
+            padding-left: 15px
+            font-size: 20px
+            color: $font-dark
+    .category
+        display: block
+        padding: 20px
+        color: $font
+        text-decoration: none
+        .count
+            color: $font-dark
+            font-style: italic
+
+.article
+    header
+        padding: 10px
+        background-color: $bg-light
+        font-size: 10px
+        h1
+            margin: 0
+            font-size: 20px
+        img
+            height: 10px
+    .summary
+        margin-left: 50px
+        padding: 0px 20px
+        width: 60%
+        border-bottom: 5px solid $color
+        text-align: justify
+    .article_content
+        padding: 10px 30px
+
+
+.global_list
+    h1
+        margin: 0
+        padding: 10px
+        font-size: 20px
+        background-color: $bg-light
+    .list
+        margin-top: 50px
+        padding: 0px 100px
+        .object
+            display: block
+            position: relative
+            bottom: 0px
+            right: 0px
+            padding: 20px
+            margin: 10px
+            border-left: 5px solid $color
+            background-color: $bg-light
+            color: $font
+            text-decoration: none
+            @include transition(all)
+            &:hover
+                bottom: 5px
+                right: 5px
+                box-shadow: 5px 5px 2px $bg-dark
+            h1
+                border-bottom: 2px solid $bg-dark
+            .metadata
+                font-size: 10px
+            img
+                height: 10px
+    .count
+        color: $font-dark
+        font-style: italic
+        font-weight: normal
+    .paginator
+        padding: 30px
+        text-align: center
+        span
+            color: $font-very-dark
+
+.footer
+    display: grid
+    grid-template-columns: min-content auto min-content
+    min-height: 50px
+    background-color: $bg-light
+    .copyright, .pelican
+        @include center
+        color: $font-dark
+        padding: 10px
+        white-space: nowrap
+    .links
+        @include center
+        padding: 10px
+        a
+            padding: 0px 10px

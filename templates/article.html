@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<article class="article">
+    <header class="title">
+        <h1>{{ article.title }}</h1>
+        <div>
+            <img src="/{{ THEME_STATIC_DIR }}/images/date.svg" alt="Date">
+            Created: {{ article.date }}{% if article.metadata["modified"] %} / Modified: {{ article.metadata["modified"] }}{% endif %}
+        </div>
+        <div>
+            <img src="/{{ THEME_STATIC_DIR }}/images/authors.svg" alt="Authors">
+            {% for author in article.authors %} {{ author }}{% endfor %}
+        </div>
+        {% if article.category != 'misc' and article.category != 'pages' %}
+        <div>
+            <img src="/{{ THEME_STATIC_DIR }}/images/category.svg" alt="Category">
+            {{ article.category }}
+        </div>
+        {% endif %}
+        {% if article.tags is defined %}
+        <div>
+            <img src="/{{ THEME_STATIC_DIR }}/images/tags.svg" alt="Tags">
+            {% for tag in article.tags %} {{ tag }}{% endfor %}
+        </div>
+        {% endif %}
+        <div>
+            <img src="/{{ THEME_STATIC_DIR }}/images/languages.svg" alt="Languages">
+            Language: {{ article.lang }}
+            {% if article.translations[0] is defined %}/ Translations:{% for trans in article.translations %} <a href="/{{ trans.url }}">{{ trans.lang }}</a>{% endfor %}{% endif %}
+        </div>
+    </header>
+    <div class="summary">
+        {{ article.summary }}
+    </div>
+    <section class="article_content">
+        {{ article.content }}
+    </section>
+</article>
+{% endblock %}

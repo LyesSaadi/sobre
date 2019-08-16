@@ -1,0 +1,9 @@
+<sidebar class="sidebar">
+    <a href="/" class="sitename"><img src="/{{ THEME_STATIC_DIR }}/images/icon.svg" alt="ICON" /><span>{{ SITENAME }}</span></a>
+    {% for cat, articles in categories|sort %}
+        <a class="category" href="/{{ cat.url }}">{{ cat }} <span class="count">({{ articles|count }})</span></a>
+    {% endfor %}
+    <a class="category" href="/categories.html">All categories <span class="count">({{ categories|count }})</span></a>
+    <a class="category" href="/tags.html">All tags <span class="count">({{ tags|count }})</span></a>
+    <a class="category" href="/authors.html">All authors <span class="count">({{ authors|count }})</span></a>
+</sidebar>

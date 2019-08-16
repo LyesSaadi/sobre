@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% set _objects = categories %}
+{% set _list_name = "Categories" %}
+{% include 'parts/global_list.html' %}
+{% endblock %}

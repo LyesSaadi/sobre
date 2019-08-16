@@ -1,0 +1,17 @@
+<footer class="footer">
+    <a class="copyright" href="/pages/copyright.html">
+        © {{ AUTHOR }}
+    </a>
+    <div class="links">
+        {% for name, link in LINKS %}
+            <a href="{{ link }}">{{ name }}</a>
+        {% endfor %}
+        |
+        {% for name, link in SOCIAL %}
+            <a href="{{ link }}">{{ name }}</a>
+        {% endfor %}
+    </div>
+    <div class="pelican">
+        Powered with ♥ by&nbsp;<a href="https://getpelican.com/">Pelican</a>, Theme&nbsp;<a href="https://github.com/LyesSaadi/sobre">sobre</a>
+    </div>
+</footer>

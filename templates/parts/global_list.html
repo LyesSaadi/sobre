@@ -1,0 +1,10 @@
+<header class="global_list">
+    <h1>{{ _list_name }} <span class="count">({{ _objects|count }})</span></h1>
+    <div class="list">
+        {% for _obj, articles in _objects|sort %}
+            <a href="/{{ _obj.url }}" class="object">
+                {{ _obj }} <span class="count">({{ articles|count }})</span>
+            </a>
+        {% endfor %}
+    </div>
+</header>
