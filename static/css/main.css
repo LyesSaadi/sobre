@@ -56,8 +56,27 @@ a {
   width: 60%;
   border-bottom: 5px solid #15D;
   text-align: justify; }
-.article .article_content {
+
+.article_content {
   padding: 10px 30px; }
+  .article_content h1 {
+    font-size: xx-large; }
+  .article_content h1, .article_content h2 {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: #15D;
+    text-decoration-thickness: 2px; }
+  .article_content hr {
+    border: 1px solid #15D; }
+  .article_content pre {
+    display: inline-block;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 5px; }
+  .article_content blockquote {
+    margin-left: 0;
+    padding-left: 40px;
+    border-left: 5px solid #222; }
 
 .global_list h1 {
   margin: 0;
